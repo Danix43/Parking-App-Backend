@@ -1,0 +1,32 @@
+openapi: 3.1.0
+info: 
+  title: Parking App Backend
+  contact:
+    name: Danix43
+    url: https://www.github.com/danix43
+    email: thatdanix43@gmail.com
+  license:
+    name: MIT License
+  version: 0.0.1-DEVELOPMENT
+paths:
+  /parkingspots:
+    get:
+      summary: Get all the parking spots registered
+      description: Retrieves all the parking spots registered and all the data associeted.
+      responses:
+        "200":
+          description: "OK"
+          content: 
+            application/json:
+              schema: 
+                type: array
+                maxItems: 999
+                minItems: 0
+                items: 
+                  type: object
+                  properties: 
+                    id: 
+                      type: number
+                      description: |
+                        Identifier of the parking spot
+                      
