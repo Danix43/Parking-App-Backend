@@ -16,8 +16,8 @@ export class ParkingService {
   }
 
   // retrieve a parking spot by location name
-  findByLocationName(locationName: string): ParkingSpot {
-    return this.parkingSpots.find(
+  findByLocationName(locationName: string): ParkingSpot[] {
+    return this.parkingSpots.filter(
       (spot) => spot.location.name === locationName,
     );
   }
