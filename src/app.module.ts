@@ -11,6 +11,7 @@ import { UserModule } from './users/user.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
+      // password already leaked ;)
       password: 'danix1923',
       database: 'parkingapp',
       entities: ['./parking/entities/*.ts'],
