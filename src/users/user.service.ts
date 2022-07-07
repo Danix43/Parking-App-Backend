@@ -20,12 +20,12 @@ export class UserService {
     }
   }
 
-  registerNewUser(name: string, initialBalance: number): Promise<User> {
-    const userDto = new UserDto();
-    userDto.name = name;
-    userDto.balance = initialBalance;
-
+  registerNewUser(userDto: UserDto): Promise<User> {
     return this.userRepository.save(userDto);
+  }
+
+  findAll(): Promise<User[]> {
+    return this.userRepository.find();
   }
 
   findUserByName(name: string): Promise<User> {
