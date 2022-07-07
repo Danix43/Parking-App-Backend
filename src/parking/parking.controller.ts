@@ -1,10 +1,16 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { ParkingService } from './app.service';
-import { ParkingSpot } from './dtos/parkingspot.dto';
+import { ParkingService } from './parking.service';
+import { ParkingSpot } from './parkingspot.entity';
 
 @Controller('api/v1/parking')
 export class ParkingController {
   constructor(private readonly appService: ParkingService) {}
+
+  @Get('sampleData')
+  async sampleData(): Promise<string> {
+    this.appService.addSampleData();
+    return 'added sample data';
+  }
 
   @Get('all')
   async findAll(): Promise<ParkingSpot[]> {
@@ -12,7 +18,7 @@ export class ParkingController {
   }
 
   @Get('id/:id')
-  async findById(@Param('id') id: number):  Promise<ParkingSpot> {
+  async findById(@Param('id') id: number): Promise<ParkingSpot> {
     return this.appService.findById(id);
   }
 
