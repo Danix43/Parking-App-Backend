@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ParkingService } from './parking.service';
+import { ParkingSpotDto } from './parkingspot.dto';
 import { ParkingSpot } from './parkingspot.entity';
 
 @Controller('api/v1/parking')
@@ -32,5 +33,15 @@ export class ParkingController {
   @Get('avalabile')
   async findByAvalability(): Promise<ParkingSpot[]> {
     return this.appService.findByAvalability();
+  }
+
+  @Delete('id/:id/delete')
+  async deleteById(@Param('id') id: number): Promise<void> {
+    return this.appService.deleteById(id);
+  }
+
+  @Post('save')
+  async createNewSpot(@Body() spot: ParkingSpotDto): Promise<void> {
+    return this.appService.saveNewSpot(spot);
   }
 }
